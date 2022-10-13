@@ -1,5 +1,5 @@
 # Zimedari Fullstack 
-An initiative to gather and solve pakistan's issues
+A Platform which helps to mobilise young generation into politics. Generate public database of issues around the Pakistan and log research based solutions.
 
 ## Requirements
 
