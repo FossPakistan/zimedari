@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
 import user from './user';
-import todos from './todos';
+import issues from './issues';
 
 const createRootReducer = routerReducer => combineReducers({
   router: routerReducer,
   user,
-  todos,
+  issues,
 });
 
 export default createRootReducer;

@@ -1,9 +1,9 @@
 const Session = require('./Session');
 const User = require('./User');
-const Todo = require('./Todo');
+const Issue = require('./Issue');
 
 module.exports = {
   Session,
   User,
-  Todo,
+  Issue,
 };

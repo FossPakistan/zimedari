@@ -5,31 +5,31 @@ export const UPDATE_TODO = 'UPDATE_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const INCREMENT_TODO_ID = 'INCREMENT_TODO_ID';
 
-export const setTodos = todos => ({
+export const setIssues = issues => ({
   type: SET_TODOS,
-  todos,
+  issues,
 });
 
-export const addTodo = ({ id, text, createdAt }) => ({
+export const addIssue = ({ id, text, createdAt }) => ({
   type: ADD_TODO,
   createdAt,
   id,
   text,
 });
 
-export const toggleCompleteTodo = id => ({
+export const toggleCompleteIssue = id => ({
   type: TOGGLE_COMPLETE_TODO,
   id,
 });
 
-export const updateTodo = ({ id, text, updatedAt }) => ({
+export const updateIssue = ({ id, text, updatedAt }) => ({
   type: UPDATE_TODO,
   updatedAt,
   id,
   text,
 });
 
-export const removeTodo = id => ({
+export const removeIssue = id => ({
   type: REMOVE_TODO,
   id,
 });

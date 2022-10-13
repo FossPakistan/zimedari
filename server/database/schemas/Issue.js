@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const todoSchema = new Schema({
+const issueSchema = new Schema({
   user: { type: Schema.ObjectId, ref: 'User', required: true },
   text: { type: String },
   completed: { type: Boolean, default: false },
@@ -10,6 +10,6 @@ const todoSchema = new Schema({
   updated_at: { type: Date },
 }, { versionKey: false });
 
-const Todo = mongoose.model('Todo', todoSchema);
+const Issue = mongoose.model('Issue', issueSchema);
 
-module.exports = Todo;
+module.exports = Issue;

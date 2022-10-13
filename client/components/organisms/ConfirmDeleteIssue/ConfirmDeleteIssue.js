@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Card from 'react-bulma-companion/lib/Card';
 import Content from 'react-bulma-companion/lib/Content';
 
-export default function ConfirmDeleteTodo({ closeModal, deleteTodo }) {
+export default function ConfirmDeleteIssue({ closeModal, deleteIssue }) {
   return (
     <Card>
       <Card.Content>
@@ -16,7 +16,7 @@ export default function ConfirmDeleteTodo({ closeModal, deleteTodo }) {
         <Card.FooterItem onClick={closeModal} onKeyPress={closeModal}>
           Cancel
         </Card.FooterItem>
-        <Card.FooterItem onClick={deleteTodo} onKeyPress={deleteTodo}>
+        <Card.FooterItem onClick={deleteIssue} onKeyPress={deleteIssue}>
           Delete
         </Card.FooterItem>
       </Card.Footer>
@@ -24,7 +24,7 @@ export default function ConfirmDeleteTodo({ closeModal, deleteTodo }) {
   );
 }
 
-ConfirmDeleteTodo.propTypes = {
+ConfirmDeleteIssue.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
+  deleteIssue: PropTypes.func.isRequired,
 };

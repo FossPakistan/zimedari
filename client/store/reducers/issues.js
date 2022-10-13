@@ -3,11 +3,11 @@ import R from 'ramda';
 
 import {
   SET_TODOS, ADD_TODO, TOGGLE_COMPLETE_TODO, UPDATE_TODO, REMOVE_TODO,
-} from '_store/actions/todos';
+} from '_store/actions/issues';
 
 import { LOGOUT_USER } from '_store/actions/user';
 
-export function todo(state = {
+export function issue(state = {
   completed: false,
 }, action) {
   switch (action.type) {
@@ -31,15 +31,15 @@ export function todo(state = {
   }
 }
 
-export default function todos(state = [], action) {
+export default function issues(state = [], action) {
   const index = R.findIndex(R.propEq('id', action.id), state);
-  const updatedAtIndex = { $splice: [[index, 1, todo(state[index], action)]] };
+  const updatedAtIndex = { $splice: [[index, 1, issue(state[index], action)]] };
 
   switch (action.type) {
     case SET_TODOS:
-      return update(state, { $set: action.todos });
+      return update(state, { $set: action.issues });
     case ADD_TODO:
-      return update(state, { $push: [todo(undefined, action)] });
+      return update(state, { $push: [issue(undefined, action)] });
     case TOGGLE_COMPLETE_TODO:
       return update(state, updatedAtIndex);
     case UPDATE_TODO:

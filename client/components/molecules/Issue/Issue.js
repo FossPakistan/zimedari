@@ -18,12 +18,12 @@ import Level from 'react-bulma-companion/lib/Level';
 import Icon from 'react-bulma-companion/lib/Icon';
 import Textarea from 'react-bulma-companion/lib/Textarea';
 
-import { attemptToggleCompleteTodo, attemptUpdateTodo, attemptDeleteTodo } from '_store/thunks/todos';
+import { attemptToggleCompleteIssue, attemptUpdateIssue, attemptDeleteIssue } from '_store/thunks/issues';
 import ConfirmModal from '_components/organisms/ConfirmModal';
 
 const fromNow = date => formatDistanceToNow(parseISO(date), { addSuffix: true });
 
-export default function Todo({ id, text, completed, createdAt, updatedAt }) {
+export default function Issue({ id, text, completed, createdAt, updatedAt }) {
   const dispatch = useDispatch();
 
   const [currentText, setCurrentText] = useState(text);
@@ -47,29 +47,29 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
   const openModal = () => setConfirm(true);
   const closeModal = () => setConfirm(false);
   const updateText = e => setCurrentText(e.target.value);
-  const editTodo = () => setEdit(true);
+  const editIssue = () => setEdit(true);
 
   const cancelEdit = () => {
     setEdit(false);
     setCurrentText(text);
   };
 
-  const handleUpdateTodo = () => {
+  const handleUpdateIssue = () => {
     if (currentText) {
-      dispatch(attemptUpdateTodo(id, currentText))
+      dispatch(attemptUpdateIssue(id, currentText))
         .then(() => setEdit(false));
     }
   };
 
-  const toggleCompleteTodo = () => dispatch(attemptToggleCompleteTodo(id));
+  const toggleCompleteIssue = () => dispatch(attemptToggleCompleteIssue(id));
 
-  const deleteTodo = () => dispatch(attemptDeleteTodo(id));
+  const deleteIssue = () => dispatch(attemptDeleteIssue(id));
 
   return (
-    <Box className="todo" component="li">
+    <Box className="issue" component="li">
       <Media>
         <Media.Left>
-          <Icon onClick={toggleCompleteTodo} onKeyPress={toggleCompleteTodo}>
+          <Icon onClick={toggleCompleteIssue} onKeyPress={toggleCompleteIssue}>
             {completed
               ? <FontAwesomeIcon icon={faSquareCheck} size="lg" />
               : <FontAwesomeIcon icon={faSquare} size="lg" />}
@@ -104,11 +104,11 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
             </Level.Left>
             <Level.Right>
               {edit ? (
-                <Icon className="space-right" onClick={handleUpdateTodo} onKeyPress={handleUpdateTodo}>
+                <Icon className="space-right" onClick={handleUpdateIssue} onKeyPress={handleUpdateIssue}>
                   <FontAwesomeIcon icon={faFloppyDisk} size="lg" />
                 </Icon>
               ) : (
-                <Icon className="space-right" onClick={editTodo} onKeyPress={editTodo}>
+                <Icon className="space-right" onClick={editIssue} onKeyPress={editIssue}>
                   <FontAwesomeIcon icon={faPencil} size="lg" />
                 </Icon>
               )}
@@ -128,13 +128,13 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
       <ConfirmModal
         confirm={confirm}
         closeModal={closeModal}
-        deleteTodo={deleteTodo}
+        deleteIssue={deleteIssue}
       />
     </Box>
   );
 }
 
-Todo.propTypes = {
+Issue.propTypes = {
   id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired,
@@ -142,6 +142,6 @@ Todo.propTypes = {
   updatedAt: PropTypes.string,
 };
 
-Todo.defaultProps = {
+Issue.defaultProps = {
   updatedAt: null,
 };
